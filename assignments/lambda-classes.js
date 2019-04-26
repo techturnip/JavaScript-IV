@@ -197,6 +197,9 @@ console.log(tim);
 console.log(fred.demo('React'));
 console.log(tina.grade(tyler, 'JS Classes'));
 console.log(tim.speak());
+console.log(fred.specialty);
+console.log(tina.favLanguage);
+console.log(tim.catchPhrase);
 
 // Student
 console.log(tyler);
@@ -206,6 +209,9 @@ console.log(tyler.listsSubjects());
 console.log(coraline.PRAssignment('React'));
 console.log(jimmy.sprintChallenge('Flexbox'));
 console.log(tyler.speak());
+console.log(tyler.previousBackground);
+console.log(coraline.className);
+console.log(jimmy.favSubjects);
 
 // Project Manager
 console.log(sara);
@@ -214,6 +220,8 @@ console.log(jeremy);
 console.log(sara.standUp('webpt6_sara'));
 console.log(connor.debugsCode(tyler, 'Flexbox'));
 console.log(jeremy.speak());
+console.log(sara.gradClassName);
+console.log(connor.favInstructor);
 
 // Stretch
 console.log(sara.giveGrade(tyler));
