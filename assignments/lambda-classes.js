@@ -27,6 +27,19 @@ class Instructor extends Person {
   grade(student, subj) {
     return `${student.name} receives a perfect score on ${subj}!`;
   }
+
+  giveGrade(student) {
+    let randomNum = Math.floor(Math.random() * 30 + 1);
+    let posOrNeg = Math.random() < 0.5 ? -1 : 1;
+    randomNum = randomNum * posOrNeg;
+    student.grade += randomNum;
+
+    if (student.grade >= 100) {
+      return (student.grade = 100);
+    }
+
+    return student.grade;
+  }
 }
 
 class Student extends Person {
@@ -35,6 +48,7 @@ class Student extends Person {
     this.previousBackground = props.previousBackground;
     this.className = props.className;
     this.favSubjects = props.favSubjects;
+    this.grade = props.grade;
   }
 
   listsSubjects() {
@@ -47,6 +61,14 @@ class Student extends Person {
 
   sprintChallenge(subj) {
     return `${this.name} has begun sprint challenge on ${subj}!`;
+  }
+
+  graduate() {
+    if (this.grade > 70) {
+      return `${this.name} has graduated with a grade of ${this.grade}`;
+    } else {
+      return `${this.name} has more work to do with a grade of ${this.grade}`;
+    }
   }
 }
 
@@ -76,6 +98,7 @@ const fred = new Instructor({
   specialty: 'Front-end',
   catchPhrase: `Don't forget the homies`
 });
+
 const tina = new Instructor({
   name: 'Tina',
   location: 'Charleston',
@@ -85,6 +108,7 @@ const tina = new Instructor({
   specialty: 'Machine Learning',
   catchPhrase: `Skynet for the win!`
 });
+
 const tim = new Instructor({
   name: 'Tim',
   location: 'Colorado Springs',
@@ -103,8 +127,10 @@ const tyler = new Student({
   gender: 'male',
   previousBackground: 'Construction Materials Testing',
   className: 'WEBPT6',
-  favSubjects: ['Responsive Design', 'React', 'JavaScript']
+  favSubjects: ['Responsive Design', 'React', 'JavaScript'],
+  grade: 80
 });
+
 const jimmy = new Student({
   name: 'Jimmy',
   location: 'Brownsburg',
@@ -112,8 +138,10 @@ const jimmy = new Student({
   gender: 'male',
   previousBackground: 'Burger Flipper',
   className: 'WEBPT7',
-  favSubjects: ['Responsive Design', 'HTML', 'OOP']
+  favSubjects: ['Responsive Design', 'HTML', 'OOP'],
+  grade: 80
 });
+
 const coraline = new Student({
   name: 'Coraline',
   location: 'Fishers',
@@ -121,7 +149,8 @@ const coraline = new Student({
   gender: 'female',
   previousBackground: 'Dog Groomer',
   className: 'WEBPT6',
-  favSubjects: ['UI/UX', 'Node', 'Python']
+  favSubjects: ['UI/UX', 'Node', 'Python'],
+  grade: 80
 });
 
 // Project Managers
@@ -136,6 +165,7 @@ const sara = new ProjectManager({
   gradClassName: 'CS238',
   favInstructor: 'Fred'
 });
+
 const connor = new ProjectManager({
   name: 'Connor',
   location: 'Louisville',
@@ -147,6 +177,7 @@ const connor = new ProjectManager({
   gradClassName: 'CS5',
   favInstructor: 'Tina'
 });
+
 const jeremy = new ProjectManager({
   name: 'Jeremy',
   location: 'Los Angeles',
@@ -183,3 +214,11 @@ console.log(jeremy);
 console.log(sara.standUp('webpt6_sara'));
 console.log(connor.debugsCode(tyler, 'Flexbox'));
 console.log(jeremy.speak());
+
+// Stretch
+console.log(sara.giveGrade(tyler));
+console.log(tyler.graduate());
+console.log(connor.giveGrade(coraline));
+console.log(coraline.graduate());
+console.log(jeremy.giveGrade(jimmy));
+console.log(jimmy.graduate());
